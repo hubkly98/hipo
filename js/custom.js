@@ -69,41 +69,6 @@
     $('[data-toggle="tooltip"]').tooltip()
     $('[data-toggle="popover"]').popover()
 
-    /* ==============================================
-     CONTACT -->
-     =============================================== */
-    jQuery(document).ready(function() {
-        $('#contactform').submit(function() {
-            var action = $(this).attr('action');
-            $("#message").slideUp(750, function() {
-                $('#message').hide();
-                $('#submit')
-                    .after('<img src="images/ajax-loader.gif" class="loader" />')
-                    .attr('disabled', 'disabled');
-                $.post(action, {
-                        first_name: $('#first_name').val(),
-                        last_name: $('#last_name').val(),
-                        email: $('#email').val(),
-                        phone: $('#phone').val(),
-                        select_service: $('#select_service').val(),
-                        select_price: $('#select_price').val(),
-                        comments: $('#comments').val(),
-                        verify: $('#verify').val()
-                    },
-                    function(data) {
-                        document.getElementById('message').innerHTML = data;
-                        $('#message').slideDown('slow');
-                        $('#contactform img.loader').fadeOut('slow', function() {
-                            $(this).remove()
-                        });
-                        $('#submit').removeAttr('disabled');
-                        if (data.match('success') != null) $('#contactform').slideUp('slow');
-                    }
-                );
-            });
-            return false;
-        });
-    });
 
     /* ==============================================
      CODE WRAPPER -->
@@ -210,12 +175,3 @@ var TxtType = function(el, toRotate, period) {
 
 /*== map js ==*/
 
-    function myMap() {
-        var mapProp= {
-            center:new google.maps.LatLng(51.508742,-0.120850),
-            zoom:5,
-        };
-        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-    }
-	
-/*== map js ==*/	
