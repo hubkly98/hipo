@@ -173,5 +173,17 @@ var TxtType = function(el, toRotate, period) {
         document.body.appendChild(css);
     };
 
-/*== map js ==*/
+/*== refresh js ==*/
+window.onload = function () {
+    // Sprawdź, czy lokalizacja hasha jest "top"
+    if (window.location.hash === "#navbar") {
+       // Ustaw pozycję przewinięcia na górę strony
+       window.scrollTo(0, 0);
+    }
 
+    // Dodaj obsługę zdarzeń poprzez nadpisanie odświeżenia strony
+    window.onbeforeunload = function () {
+       window.location.hash = "navbar";
+       window.scrollTo(0, 0);
+    };
+ };
